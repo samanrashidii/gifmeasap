@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import logo from './images/logo.svg';
 import SearchBox from './components/SearchBox';
 
@@ -10,7 +11,10 @@ class App extends Component {
 
   doSearch = (event) => {
     if (event) {
-      console.log(event)
+      axios.get(`https://api.giphy.com/v1/gifs/search?api_key=1D2tEe96Y368U74dVgnUqdTD07hUGw0d&q=saman&limit=25&offset=0&rating=G&lang=en`)
+      .then(res => {
+        console.log(res.data)
+      })
     }
   }
   render () {
