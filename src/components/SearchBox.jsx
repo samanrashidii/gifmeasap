@@ -4,7 +4,7 @@ class SearchBox extends Component {
     state = {
         value: null
     }
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({value: event.target.value});
     }
     render() { 
@@ -21,6 +21,7 @@ class SearchBox extends Component {
                         <button
                             className="btn btn-success"
                             type="button"
+                            onClick={() => this.props.searchItem(this.state.value)}
                         >
                             Search
                         </button>

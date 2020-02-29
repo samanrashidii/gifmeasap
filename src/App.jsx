@@ -7,6 +7,12 @@ class App extends Component {
     value: null,
     name: 'Gif Me...'
   }
+
+  doSearch = (event) => {
+    if (event) {
+      console.log(event)
+    }
+  }
   render () {
     return (
       <div className="App">
@@ -14,7 +20,9 @@ class App extends Component {
           <div className="app-inner-container">
             <img src={logo} className="app-logo" alt="logo" />
             <h1>{this.state.name}</h1>
-            <SearchBox />
+            <SearchBox
+              searchItem={this.doSearch}
+            />
           </div>
         </div>
       </div>
