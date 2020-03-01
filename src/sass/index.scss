@@ -28,10 +28,11 @@ body {
         margin:5px;
       }
       .spinner-border{
+        display:block;
         width: 16px;
         height: 16px;
         border-width: 2px !important;
-        margin-top:-4px;
+        margin:2px auto 0 auto;
       }
       .input-group-append{
         .btn{
