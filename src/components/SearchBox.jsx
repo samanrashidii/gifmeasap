@@ -30,7 +30,7 @@ class SearchBox extends Component {
                     <input 
                         type="text"
                         className="form-control"
-                        placeholder="name of gif"
+                        placeholder="name of Gif"
                         onChange={this.handleChange}
                         onKeyDown={this.keyPress}
                     />
