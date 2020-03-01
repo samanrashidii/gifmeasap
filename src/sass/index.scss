@@ -15,10 +15,35 @@ body {
     align-items: center;
     min-height: 100vh;
     .app-inner-container{
+      width:100%;
       text-align: center;
+      padding:1rem;
       .app-logo{
         width:140px;
         pointer-events: none;
+      }
+      .card{
+        max-width: 240px;
+        padding:0;
+        margin:5px;
+      }
+      .spinner-border{
+        width: 16px;
+        height: 16px;
+        border-width: 2px !important;
+        margin-top:-4px;
+      }
+      .input-group-append{
+        .btn{
+          min-width: 75px;
+        }
+      }
+      .input-group{
+        input{
+          &:focus{
+            box-shadow: none !important;
+          }
+        }
       }
     }
   }

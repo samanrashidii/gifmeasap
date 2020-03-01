@@ -7,7 +7,23 @@ class SearchBox extends Component {
     handleChange = (event) => {
         this.setState({value: event.target.value});
     }
+    keyPress = (e) => {
+        if(e.keyCode === 13){
+           this.props.searchItem(this.state.value)
+        }
+    }
     render() { 
+        const isLoading = this.props.loading;
+        let button;
+
+        if (isLoading) {
+            button = <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+        } else {
+            button = <span>Search</span>;
+        }
+
         return (
             <div>
                 <div className="input-group my-3">
@@ -16,6 +32,7 @@ class SearchBox extends Component {
                         className="form-control"
                         placeholder="name of gif"
                         onChange={this.handleChange}
+                        onKeyDown={this.keyPress}
                     />
                     <div className="input-group-append">
                         <button
@@ -23,7 +40,7 @@ class SearchBox extends Component {
                             type="button"
                             onClick={() => this.props.searchItem(this.state.value)}
                         >
-                            Search
+                            {button}
                         </button>
                     </div>
                 </div>
