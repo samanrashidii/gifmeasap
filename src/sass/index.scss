@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App{
+  min-height: 100vh;
+  .app-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    .app-inner-container{
+      width:100%;
+      text-align: center;
+      padding:1rem;
+      .app-logo{
+        width:140px;
+        pointer-events: none;
+      }
+      .card{
+        max-width: 240px;
+        padding:0;
+        margin:5px;
+      }
+      .spinner-border{
+        display:block;
+        width: 16px;
+        height: 16px;
+        border-width: 2px !important;
+        margin:1px auto 0 auto;
+      }
+      .input-group-append{
+        .btn{
+          min-width: 75px;
+        }
+      }
+      .input-group{
+        input{
+          &:focus{
+            box-shadow: none !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

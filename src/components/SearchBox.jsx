@@ -1,0 +1,52 @@
+import React, { Component } from 'react';
+
+class SearchBox extends Component {
+    state = {
+        value: null
+    }
+    handleChange = (event) => {
+        this.setState({value: event.target.value});
+    }
+    keyPress = (e) => {
+        if(e.keyCode === 13){
+           this.props.searchItem(this.state.value)
+        }
+    }
+    render() { 
+        const isLoading = this.props.loading;
+        let button;
+
+        if (isLoading) {
+            button = <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+        } else {
+            button = <span>Search</span>;
+        }
+
+        return (
+            <div>
+                <div className="input-group my-3">
+                    <input 
+                        type="text"
+                        className="form-control"
+                        placeholder="name of Gif"
+                        onChange={this.handleChange}
+                        onKeyDown={this.keyPress}
+                    />
+                    <div className="input-group-append">
+                        <button
+                            className="btn btn-success"
+                            type="button"
+                            onClick={() => this.props.searchItem(this.state.value)}
+                        >
+                            {button}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+ 
+export default SearchBox;
