@@ -17,9 +17,9 @@ class SearchBox extends Component {
         let button;
 
         if (isLoading) {
-            button = <div class="spinner-border text-light" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
+            button = <div className="spinner-border text-light" role="status">
+                        <span className="sr-only">Loading...</span>
+                     </div>
         } else {
             button = <span>Search</span>;
         }
