@@ -8,9 +8,16 @@ class App extends Component {
   state = {
     value: null,
     name: 'React Gif Me...',
-    images: [],
-    pagination: 0,
-    count: 20,
+    giphy: {
+      images: [],
+      pagination: 0,
+      count: 15,
+    },
+    tenor: {
+      images: [],
+      pagination: 0,
+      count: 15,
+    },
     loading: false
   }
 
@@ -26,19 +33,43 @@ class App extends Component {
         params: {
           api_key: '1D2tEe96Y368U74dVgnUqdTD07hUGw0d',
           q: event,
-          limit: this.state.count,
-          offset: this.state.pagination,
+          limit: this.state.giphy.count,
+          offset: this.state.giphy.pagination,
           rating: 'G',
           lang: 'en'
         }
       })
       .then(res => {
-        const images = this.state.images
-        var newImages = images.concat(res.data.data)
-        this.setState({
-          images: newImages,
-          loading: false,
-          pagination: this.state.pagination + this.state.count
+        const giphyImages = this.state.giphy.images
+        var gihpyNewImages = giphyImages.concat(res.data.data)
+
+        axios({
+          method: 'get',
+          url: 'https://api.tenor.com/v1/search',
+          params: {
+            q: event,
+            key: '3NAXFI8GNW3G',
+            limit: this.state.tenor.count,
+            pos: this.state.tenor.pagination,
+            media_filter: 'basic'
+          }
+        })
+        .then(result => {
+          const tenorImages = this.state.tenor.images
+          var tenorNewImages = tenorImages.concat(result.data.results)
+          this.setState({
+            loading: false,
+            giphy: {
+              images: gihpyNewImages,
+              count: this.state.giphy.count,
+              pagination: this.state.giphy.pagination + this.state.giphy.count
+            },
+            tenor: {
+              images: tenorNewImages,
+              count: this.state.tenor.count,
+              pagination: this.state.tenor.pagination + this.state.tenor.count
+            }
+          })
         })
       })
     }
@@ -51,6 +82,12 @@ class App extends Component {
           <div className="app-inner-container">
             <img src={logo} className="app-logo" alt="logo" />
             <h1>{this.state.name}</h1>
+            <p>
+              Search Gifs through <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster and in one place
+              <a href="https://github.com/samanrashidii/gifme-react" target="_blank" className="ml-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" height="30" alt="Github Icon" />
+              </a>
+            </p>
             <div className="row justify-content-center">
               <div className="col-4-sm col-12-xs">
                 <SearchBox
@@ -60,10 +97,11 @@ class App extends Component {
               </div>
             </div>
             <div className="d-flex flex-wrap justify-content-center">
-              {this.state.images.map((el, index) => <Item imageUrl={el.images.original.url} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
-              {this.state.images.length === 0 && <p className="mt-4">There is nothing to show right now!</p>}
+              {this.state.giphy.images.map((el, index) => <Item imageUrl={el.images.original.url} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
+              {this.state.tenor.images.map((el, index) => <Item imageUrl={el.url} thumb={el.media[0].nanogif.url} title={el.title} key={index} />)}
+              {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0) && <p className="mt-4">There is nothing to show right now!</p>}
             </div>
-            {this.state.images.length > 0 && <button
+            {(this.state.giphy.images.length > 0 || this.state.tenor.images.length > 0) && <button
               className="btn btn-info mt-4"
               onClick={() => this.doSearch(this.state.value)}
             >
