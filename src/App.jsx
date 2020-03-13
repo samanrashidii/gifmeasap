@@ -56,7 +56,13 @@ class App extends Component {
       .then(res => {
         const giphyImages = this.state.giphy.images
         var gihpyNewImages = giphyImages.concat(res.data.data)
-
+        this.setState({
+          giphy: {
+            images: gihpyNewImages,
+            count: this.state.giphy.count,
+            pagination: this.state.giphy.pagination + this.state.giphy.count
+          }
+        })
         axios({
           method: 'get',
           url: 'https://api.tenor.com/v1/search',
@@ -73,11 +79,6 @@ class App extends Component {
           var tenorNewImages = tenorImages.concat(result.data.results)
           this.setState({
             loading: false,
-            giphy: {
-              images: gihpyNewImages,
-              count: this.state.giphy.count,
-              pagination: this.state.giphy.pagination + this.state.giphy.count
-            },
             tenor: {
               images: tenorNewImages,
               count: this.state.tenor.count,
@@ -113,7 +114,7 @@ class App extends Component {
             <div className="d-flex flex-wrap justify-content-center">
               {this.state.giphy.images.map((el, index) => <Item imageUrl={el.images.original.url} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
               {this.state.tenor.images.map((el, index) => <Item imageUrl={el.url} thumb={el.media[0].nanogif.url} title={el.title} key={index} />)}
-              {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0) && <p className="mt-4">There is nothing to show right now!</p>}
+              {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0 && this.state.value) && <p className="mt-4">There is nothing to show right now!</p>}
             </div>
             {(this.state.giphy.images.length > 0 || this.state.tenor.images.length > 0) && <button
               className="btn btn-info mt-4"
