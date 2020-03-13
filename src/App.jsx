@@ -23,6 +23,20 @@ class App extends Component {
 
   doSearch = (event) => {
     if (event) {
+      if (event !== this.state.value) {
+        this.setState({
+          giphy: {
+            images: [],
+            pagination: 0,
+            count: 15,
+          },
+          tenor: {
+            images: [],
+            pagination: 0,
+            count: 15,
+          },
+        })
+      }
       this.setState({
         loading: true,
         value: event
