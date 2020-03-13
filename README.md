@@ -1,6 +1,6 @@
 # React Gif Me
 
-Search Gifs through "Giphy" and "Tenor" faster and in one place wriiten by react
+Search Gifs through "Giphy" and "Tenor" faster and in one place.
 
 ## Language
 
