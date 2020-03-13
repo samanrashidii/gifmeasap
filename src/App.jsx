@@ -82,7 +82,12 @@ class App extends Component {
           <div className="app-inner-container">
             <img src={logo} className="app-logo" alt="logo" />
             <h1>{this.state.name}</h1>
-            <p>Search Gifs through <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster and in one place</p>
+            <p>
+              Search Gifs through <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster and in one place
+              <a href="https://github.com/samanrashidii/gifme-react" target="_blank" className="ml-2">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" height="30" alt="Github Icon" />
+              </a>
+            </p>
             <div className="row justify-content-center">
               <div className="col-4-sm col-12-xs">
                 <SearchBox
