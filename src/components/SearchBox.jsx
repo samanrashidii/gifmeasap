@@ -36,7 +36,7 @@ class SearchBox extends Component {
                     />
                     <div className="input-group-append">
                         <button
-                            className="btn btn-success"
+                            className="btn btn-info"
                             type="button"
                             onClick={() => this.props.searchItem(this.state.value)}
                         >
