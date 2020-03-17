@@ -93,13 +93,13 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <div className="app-container">
+        <div className="app-container p-2">
           <div className="app-inner-container">
             <img src={logo} className="app-logo" alt="logo" />
             <h1>{this.state.name}</h1>
             <p>
-              Search Gifs through <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster and in one place
-              <a href="https://github.com/samanrashidii/gifme-react" target="_blank" className="ml-2">
+              Search Gifs from <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster, lighter and in one place
+              <a href="https://github.com/samanrashidii/gifme-react" rel="noopener noreferrer" target="_blank" className="ml-2">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" height="30" alt="Github Icon" />
               </a>
             </p>
@@ -117,7 +117,7 @@ class App extends Component {
               {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0 && this.state.value) && <p className="mt-4">There is nothing to show right now!</p>}
             </div>
             {(this.state.giphy.images.length > 0 || this.state.tenor.images.length > 0) && <button
-              className="btn btn-info mt-4"
+              className="btn btn-info my-4"
               onClick={() => this.doSearch(this.state.value)}
             >
               Show more...
