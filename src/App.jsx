@@ -11,30 +11,27 @@ class App extends Component {
     giphy: {
       images: [],
       pagination: 0,
-      count: 15,
+      count: 10,
     },
     tenor: {
       images: [],
       pagination: 0,
-      count: 15,
+      count: 10,
     },
     loading: false
   }
 
   doSearch = (event) => {
+    const defaultObj = {
+      images: [],
+      pagination: 0,
+      count: 10
+    }
     if (event) {
       if (event !== this.state.value) {
         this.setState({
-          giphy: {
-            images: [],
-            pagination: 0,
-            count: 15,
-          },
-          tenor: {
-            images: [],
-            pagination: 0,
-            count: 15,
-          },
+          giphy: defaultObj,
+          tenor: defaultObj
         })
       }
       this.setState({
@@ -91,6 +88,16 @@ class App extends Component {
   }
 
   render () {
+    const isLoading = this.props.loading;
+    let button;
+    if (isLoading) {
+        button = <div className="spinner-border text-light" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+    } else {
+        button = <span>Show more...</span>;
+    }
+    
     return (
       <div className="App">
         <div className="app-container p-2">
@@ -120,7 +127,7 @@ class App extends Component {
               className="btn btn-info my-4"
               onClick={() => this.doSearch(this.state.value)}
             >
-              Show more...
+              {button}
             </button>}
           </div>
         </div>
