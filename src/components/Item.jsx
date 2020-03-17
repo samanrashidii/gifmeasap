@@ -3,7 +3,7 @@ import React from 'react';
 const Item = (props) => {
     return (  
         <div className="card col-xs-6 col-sm-4 col-lg-3">
-            <a href={props.imageUrl} target="_blank" rel="noopener noreferrer">
+            <a href={props.imageUrl} target="_blank" rel="noopener noreferrer" title="Click to open original size of image and downlad it">
                 <img src={props.thumb} className="card-img-top" alt="Gif Me" />
             </a>
             <div className="card-body">

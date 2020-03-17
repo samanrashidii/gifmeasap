@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import logo from './images/logo.svg';
-import SearchBox from './components/SearchBox';
+import Search from './components/Search';
 import Item from './components/Item';
 
 class App extends Component {
@@ -88,14 +88,14 @@ class App extends Component {
   }
 
   render () {
-    const isLoading = this.props.loading;
+    const isLoading = this.state.loading;
     let button;
     if (isLoading) {
-        button = <div className="spinner-border text-light" role="status">
-                    <span className="sr-only">Loading...</span>
-                  </div>
+      button =  <div className="spinner-border text-light my-1" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
     } else {
-        button = <span>Show more...</span>;
+      button = <span>Show more...</span>;
     }
     
     return (
@@ -112,13 +112,13 @@ class App extends Component {
             </p>
             <div className="row justify-content-center">
               <div className="col-4-sm col-12-xs">
-                <SearchBox
+                <Search
                   loading={this.state.loading}
                   searchItem={this.doSearch}
                 />
               </div>
             </div>
-            <div className="d-flex flex-wrap justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center mt-4">
               {this.state.giphy.images.map((el, index) => <Item imageUrl={el.images.original.url} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
               {this.state.tenor.images.map((el, index) => <Item imageUrl={el.url} thumb={el.media[0].nanogif.url} title={el.title} key={index} />)}
               {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0 && this.state.value) && <p className="mt-4">There is nothing to show right now!</p>}

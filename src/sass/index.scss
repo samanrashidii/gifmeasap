@@ -12,6 +12,18 @@ body {
   .badge-primary{
     background-color: #61DAFB;
   }
+  .btn{
+    min-width: 75px;
+  }
+  .card{
+    background-color: #f3f2ee;
+    border-color: #a7a7a7;
+    box-shadow: 0 0 5px #e1e1e1;
+    transition: all .1s ease-in-out;
+    &:hover{
+      box-shadow: 0 0 15px #2e2e2e;
+    }
+  }
   .app-container{
     display: flex;
     justify-content: center;
@@ -36,11 +48,6 @@ body {
         height: 16px;
         border-width: 2px !important;
         margin:1px auto 0 auto;
-      }
-      .input-group-append{
-        .btn{
-          min-width: 75px;
-        }
       }
       .input-group{
         input{
