@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import logo from './images/logo.svg';
-import SearchBox from './components/SearchBox';
+import Search from './components/Search';
 import Item from './components/Item';
 
 class App extends Component {
@@ -11,30 +11,27 @@ class App extends Component {
     giphy: {
       images: [],
       pagination: 0,
-      count: 15,
+      count: 10,
     },
     tenor: {
       images: [],
       pagination: 0,
-      count: 15,
+      count: 10,
     },
     loading: false
   }
 
   doSearch = (event) => {
+    const defaultObj = {
+      images: [],
+      pagination: 0,
+      count: 10
+    }
     if (event) {
       if (event !== this.state.value) {
         this.setState({
-          giphy: {
-            images: [],
-            pagination: 0,
-            count: 15,
-          },
-          tenor: {
-            images: [],
-            pagination: 0,
-            count: 15,
-          },
+          giphy: defaultObj,
+          tenor: defaultObj
         })
       }
       this.setState({
@@ -91,36 +88,46 @@ class App extends Component {
   }
 
   render () {
+    const isLoading = this.state.loading;
+    let button;
+    if (isLoading) {
+      button =  <div className="spinner-border text-light my-1" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
+    } else {
+      button = <span>Show more...</span>;
+    }
+    
     return (
       <div className="App">
-        <div className="app-container">
+        <div className="app-container p-2">
           <div className="app-inner-container">
             <img src={logo} className="app-logo" alt="logo" />
-            <h1>{this.state.name}</h1>
+            <h1 className="mt-3">{this.state.name}</h1>
             <p>
-              Search Gifs through <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster and in one place
-              <a href="https://github.com/samanrashidii/gifme-react" target="_blank" className="ml-2">
+              Search Gifs from <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster, lighter and all in one place
+              <a href="https://github.com/samanrashidii/gifme-react" rel="noopener noreferrer" target="_blank" className="ml-2">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" height="30" alt="Github Icon" />
               </a>
             </p>
             <div className="row justify-content-center">
               <div className="col-4-sm col-12-xs">
-                <SearchBox
+                <Search
                   loading={this.state.loading}
                   searchItem={this.doSearch}
                 />
               </div>
             </div>
-            <div className="d-flex flex-wrap justify-content-center">
+            <div className="d-flex flex-wrap justify-content-center mt-4">
               {this.state.giphy.images.map((el, index) => <Item imageUrl={el.images.original.url} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
               {this.state.tenor.images.map((el, index) => <Item imageUrl={el.url} thumb={el.media[0].nanogif.url} title={el.title} key={index} />)}
               {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0 && this.state.value) && <p className="mt-4">There is nothing to show right now!</p>}
             </div>
             {(this.state.giphy.images.length > 0 || this.state.tenor.images.length > 0) && <button
-              className="btn btn-info mt-4"
+              className="btn btn-info my-4"
               onClick={() => this.doSearch(this.state.value)}
             >
-              Show more...
+              {button}
             </button>}
           </div>
         </div>

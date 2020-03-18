@@ -1,6 +1,6 @@
 # React Gif Me
 
-Search Gifs through "Giphy" and "Tenor" faster and in one place.
+Search Gifs from "Giphy" and "Tenor" faster, lighter and all in one place. It will search nano gifs and small-size gifs and show them to you as preview.<br /> You can click on gif to open the original size in new tab and save it.
 
 ## Language
 
