@@ -118,13 +118,13 @@ class App extends Component {
                 />
               </div>
             </div>
-            <div className="d-flex flex-wrap justify-content-center mt-4">
+            <div className="d-flex flex-wrap justify-content-center my-4">
               {this.state.giphy.images.map((el, index) => <Item imageUrl={el.images.original.url} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
               {this.state.tenor.images.map((el, index) => <Item imageUrl={el.url} thumb={el.media[0].nanogif.url} title={el.title} key={index} />)}
               {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0 && this.state.value) && <p className="mt-4">There is nothing to show right now!</p>}
             </div>
             {(this.state.giphy.images.length > 0 || this.state.tenor.images.length > 0) && <button
-              className="btn btn-info my-4"
+              className="btn btn-info my-5"
               onClick={() => this.doSearch(this.state.value)}
             >
               {button}
