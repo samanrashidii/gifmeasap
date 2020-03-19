@@ -102,7 +102,7 @@ class App extends Component {
       <div className="App">
         <div className="app-container p-2">
           <div className="app-inner-container">
-            <img src={logo} className="app-logo" alt="logo" />
+            <img src={logo} className="app-logo" alt="React Logo" />
             <h1 className="mt-3">{this.state.name}</h1>
             <p>
               Search Gifs from <span className="badge badge-primary">Giphy</span> and <span className="badge badge-primary">Tenor</span> faster, lighter and all in one place

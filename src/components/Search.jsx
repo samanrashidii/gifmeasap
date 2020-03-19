@@ -33,6 +33,7 @@ class SearchBox extends Component {
                         placeholder="name of Gif"
                         onChange={this.handleChange}
                         onKeyDown={this.keyPress}
+                        autofocus
                     />
                     <div className="input-group-append">
                         <button

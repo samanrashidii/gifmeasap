@@ -49,6 +49,11 @@ body {
         border-width: 2px !important;
         margin:1px auto 0 auto;
       }
+      .card-img-top{
+        max-width: 100%;
+        width:auto !important;
+        border-radius: none !important;
+      }
       .input-group{
         input{
           &:focus{
