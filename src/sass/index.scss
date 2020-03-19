@@ -37,10 +37,27 @@ body {
         width:140px;
         pointer-events: none;
       }
-      .card{
-        max-width: 240px;
-        padding:0;
-        margin:5px;
+      .result-card{
+        padding:0 7px;
+        .card{
+          max-width: 200px;
+          min-height: 250px;
+          margin:7px 0;
+          .card-body{
+            position: relative;
+            padding:5px;
+            p{
+              font-size: 14px;
+            }
+            a{
+              position: absolute;
+              bottom:5px;
+              left:5px;
+              width:calc(100% - 10px);
+              z-index: 999;
+            }
+          }
+        }
       }
       .spinner-border{
         display:block;
@@ -52,7 +69,7 @@ body {
       .card-img-top{
         max-width: 100%;
         width:auto !important;
-        border-radius: none !important;
+        margin-top:-1px;
       }
       .input-group{
         input{

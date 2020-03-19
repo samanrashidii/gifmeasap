@@ -29,11 +29,12 @@ class SearchBox extends Component {
                 <div className="input-group my-3">
                     <input 
                         type="text"
+                        id="searchInput"
                         className="form-control"
                         placeholder="name of Gif"
                         onChange={this.handleChange}
                         onKeyDown={this.keyPress}
-                        autofocus
+                        autoFocus
                     />
                     <div className="input-group-append">
                         <button

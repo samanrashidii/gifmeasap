@@ -100,7 +100,7 @@ class App extends Component {
     
     return (
       <div className="App">
-        <div className="app-container p-2">
+        <div className="app-container py-2">
           <div className="app-inner-container">
             <img src={logo} className="app-logo" alt="React Logo" />
             <h1 className="mt-3">{this.state.name}</h1>
@@ -119,8 +119,8 @@ class App extends Component {
               </div>
             </div>
             <div className="d-flex flex-wrap justify-content-center my-4">
-              {this.state.giphy.images.map((el, index) => <Item imageUrl={el.images.original.url} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
-              {this.state.tenor.images.map((el, index) => <Item imageUrl={el.url} thumb={el.media[0].nanogif.url} title={el.title} key={index} />)}
+              {this.state.giphy.images.map((el, index) => <Item imageUrl={el.images.original_mp4.mp4} thumb={el.images.preview_webp.url} title={el.title} key={index} />)}
+              {this.state.tenor.images.map((el, index) => <Item imageUrl={el.media[0].mp4.url} thumb={el.media[0].nanogif.url} title={el.title} key={index} />)}
               {(this.state.giphy.images.length === 0 && this.state.tenor.images.length === 0 && this.state.value) && <p className="mt-4">There is nothing to show right now!</p>}
             </div>
             {(this.state.giphy.images.length > 0 || this.state.tenor.images.length > 0) && <button
