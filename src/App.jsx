@@ -7,7 +7,7 @@ import Item from './components/Item';
 class App extends Component {
   state = {
     value: null,
-    name: 'React Gif Me...',
+    name: 'Gif Me Asap...',
     giphy: {
       images: [],
       pagination: 0,
