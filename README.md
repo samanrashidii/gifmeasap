@@ -1,4 +1,4 @@
-# React Gif Me
+# Gif Me Asap
 
 Search Gifs from "Giphy" and "Tenor" faster, lighter and all in one place. It will search nano small-sized gifs and show them to you as preview.<br /> You can click on gif to open the original size in new tab and save it.
 
@@ -9,14 +9,14 @@ English - LTR
 ## Demo
 
 You can see demo by clicking below link : <br />
-[https://gifmereact.netlify.com](https://gifmereact.netlify.com)
+[https://gifmeasap.netlify.com](https://gifmeasap.netlify.com)
 
 ## Getting Started
 
 Clone the project from Github:
 
 ```
-git clone git@github.com:samanrashidii/gifme-react.git
+git clone git@github.com:samanrashidii/gifmeasap.git
 ```
 
 Install and save dependencies:
